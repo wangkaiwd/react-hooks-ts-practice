@@ -63,3 +63,15 @@ router.afterEach((to, from) => {
 > 文档：在2.2.0及更高版本中，`activated`和`deactivated`将会在树内的**所有嵌套组件**中触发
 ### `activated`
 **`activated`在组件第一次渲染时会被调用,之后在每次缓存组件被激活时调用**  
+
+**`activated`调用时机**:  
+第一次进入缓存路由/组件，在`mounted`后面，`beforeRouteEnter`守卫传给`next`的回调函数之前调用：  
+```js
+// 执行流程
+beforeMount => 如果你是从别的路由/组件进来(组件销毁`destroyed`/或离开缓存`deactivated`) => 
+mounted => activated 进入缓存组件 => 执行 beforeRouteEnter回调
+```
+因为组件被缓存了,**再次进入缓存路由/组件时,不会触发这些钩子函数**: `beforeCreated created beforeMount mounted`。而且`data`中的数据还是上一次离开时的数据,解决`data`中数据缓存问题的方式： 
+1. 在`activated`钩子函数中进行初始化页面`data`中的数据
+2. 在`deactivated`钩子中，当缓存页面离开时进行`data`中数据的初始化操作
+3. 禁用该组件的缓存

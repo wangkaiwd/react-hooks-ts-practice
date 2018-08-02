@@ -2,6 +2,7 @@
   <div class="wk-mine">
     <h4>Mine</h4>
     <h1>{{msg}}</h1>
+    <button @click="msg = 'hello'">改变msg</button>
   </div>
 </template>
 
