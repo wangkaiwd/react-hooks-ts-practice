@@ -74,4 +74,14 @@ mounted => activated 进入缓存组件 => 执行 beforeRouteEnter回调
 因为组件被缓存了,**再次进入缓存路由/组件时,不会触发这些钩子函数**: `beforeCreated created beforeMount mounted`。而且`data`中的数据还是上一次离开时的数据,解决`data`中数据缓存问题的方式： 
 1. 在`activated`钩子函数中进行初始化页面`data`中的数据
 2. 在`deactivated`钩子中，当缓存页面离开时进行`data`中数据的初始化操作
-3. 禁用该组件的缓存
+3. 禁用该组件的缓存  
+
+之后的调用时机：
+```js
+组件销毁destoryed/或离开缓存deactivated => activated 进入当前缓存
+=> 执行 beforeRouteEnter回调
+// 组件缓存或销毁，嵌套组件的销毁和缓存也在这里触发
+```
+
+### `deactivated`
+**组件被停用(离开路由)时调用**
