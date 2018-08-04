@@ -2,17 +2,22 @@
   <div class="wk-mine">
     <h4>Mine</h4>
     <h1>{{msg}}</h1>
+    <children></children>
     <button @click="msg = 'hello'">改变msg</button>
   </div>
 </template>
 
 <script>
+import children from "@/components/children";
 export default {
   name: "Mine",
   data() {
     return {
       msg: "进入之前"
     };
+  },
+  components: {
+    children
   },
   created() {
     console.log("created");

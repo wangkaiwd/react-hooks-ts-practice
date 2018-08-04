@@ -125,4 +125,30 @@ mounted => activated 进入缓存组件 => 执行 beforeRouteEnter回调
 `exclude`和`include`匹配规则：
 1. 匹配首先检查组件自身的`name`选项
 2. 如果`name`选项不可用，则匹配它的局部注册名称（父组件`components`对应的键值）。
-3. 只能匹配当前被包裹的组件，**不能匹配更下面嵌套的子组件**
+3. 只能匹配当前被包裹的组件，**不能匹配更下面嵌套的子组件**，即：只能匹配和不匹配路由对应的组件，路由对应组件中的子组件并不能取消缓存
+    ```html
+    <!-- App.vue -->
+    <div class="change-content">
+      <keep-alive exclude="children">
+        <router-view/>
+      </keep-alive>
+    </div>
+
+    <!-- Mine.vue -->
+    <div class="wk-mine">
+      <h4>Mine</h4>
+      <h1>{{msg}}</h1>
+      <!-- children是Mine中的子组件，并不能取消缓存 -->
+      <children></children>
+      <button @click="msg = 'hello'">改变msg</button>
+    </div>
+    ```
+4. `exclude`的优先级大于`include`
+    ```html
+    <div class="change-content">
+      <!-- 组件名为Mine的路由组件及其子组件取消缓存 -->
+      <keep-alive include="Mine" exclude="Mine">
+        <router-view/>
+      </keep-alive>
+    </div>
+    ```
