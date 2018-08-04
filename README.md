@@ -47,6 +47,8 @@ router.afterEach((to, from) => {
 })
 ```
 
+### 路由组件内的守卫
+
 ## 你不知道的`keep-alive`
 `keep-alive`: **缓存组件内部状态，避免重新渲染**
 > 文档：和`transition`相似，`keep-alive`是一个抽象组件：它自身不会渲染一个`DOM`元素，也不会出现在父组件链中
@@ -84,4 +86,43 @@ mounted => activated 进入缓存组件 => 执行 beforeRouteEnter回调
 ```
 
 ### `deactivated`
-**组件被停用(离开路由)时调用**
+**组件被停用(离开路由)时调用**  
+**使用`keep-alive`就不会调用`beforeDestory`(组件销毁前钩子)和`destoryed`(组件销毁)，因为组件没被销毁，被缓存起来了。** 如果你缓存了组件，要在组件销毁的时候做一些事情，你可以放在这个钩子里
+
+离开路由会依次触发:
+```js
+组件内的离开当前路由钩子beforeRouteLeave => 路由全局前置守卫beforeEach => 路由全局解析守卫beforeResolve
+全局后置守卫钩子 afterEach => deactivated 离开缓存组件 => activated 进入缓存组件（如果你进入的也是缓存路由）
+// 如果离开的组件没有缓存的话 beforeDestory会替换deactivated
+// 如果进入的路由也没有缓存的话 全局后置钩子afterEach => 销毁 destoryed => beforeCreated等
+```
+### 缓存你想缓存的路由
+* `include`:匹配的路由/组件会被缓存
+* `exclude`:匹配的路由/组件不会被缓存
+
+`include`和`exclude`缓存路由的方式：
+1. 逗号分隔字符串：
+    ```html
+    <keep-alive>
+      <router-view include="a,b"></router-view>
+    </keep-alive>
+    ```
+2. 正则表达式：
+    ```html
+    <keep-alive>
+      <!-- 要用v-bind绑定，否则获取的内容为字符串 -->
+      <router-view :exclude="/a|b/"></router-view>
+    </keep-alive>
+    ```
+3. 数组：
+    ```html
+    <keep-alive>
+      <!-- 要用v-bind绑定，否则获取的内容为字符串 -->
+      <router-view :include="['a','b']"></router-view>
+    </keep-alive>
+    ```
+
+`exclude`和`include`匹配规则：
+1. 匹配首先检查组件自身的`name`选项
+2. 如果`name`选项不可用，则匹配它的局部注册名称（父组件`components`对应的键值）。
+3. 只能匹配当前被包裹的组件，**不能匹配更下面嵌套的子组件**
