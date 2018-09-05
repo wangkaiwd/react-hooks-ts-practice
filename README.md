@@ -2,21 +2,7 @@
 
 > A Vue.js project
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
 ## `Vue-Router`导航守卫
 ### 全局守卫
 全局守卫有三个：
@@ -47,8 +33,17 @@ router.afterEach((to, from) => {
 })
 ```
 
-### 路由组件内的守卫
+**参数to,from,next:**  
 
+to和from是**将要进入和将要离开的路由对象**。路由对象：通过`this.$route`获取到的对象。
+
+**next:function** 这个参数是一个函数，且**必须调用，否则不能进入路由**(页面空白)
+* `next()`:进行管道中的下一个钩子。如果钩子全部执行完了，则导航的状态就是confirmed(确认的)。
+* `next(false)`: 中断当前导航，URL地址重置到`from`路由对应的地址
+* `next('/')`或`next({path:'/'})`:跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。传参方式类似于`router-link`的`to` `prop`或`router.push`中的选项
+
+### 路由组件内的守卫
+可以在**路由组件**内指直接定义
 ## 你不知道的`keep-alive`
 `keep-alive`: **缓存组件内部状态，避免重新渲染**
 > 文档：和`transition`相似，`keep-alive`是一个抽象组件：它自身不会渲染一个`DOM`元素，也不会出现在父组件链中
@@ -125,7 +120,7 @@ mounted => activated 进入缓存组件 => 执行 beforeRouteEnter回调
 `exclude`和`include`匹配规则：
 1. 匹配首先检查组件自身的`name`选项
 2. 如果`name`选项不可用，则匹配它的局部注册名称（父组件`components`对应的键值）。
-3. 只能匹配当前被包裹的组件，**不能匹配更下面嵌套的子组件**，即：只能匹配和不匹配路由对应的组件，路由对应组件中的子组件并不能取消缓存
+3. 只能匹配当前被包裹的组件，**不能匹配更下面嵌套的子组件**，即：**只能匹配和不匹配路由对应的组件，路由对应组件中的子组件并不能取消缓存**
     ```html
     <!-- App.vue -->
     <div class="change-content">
