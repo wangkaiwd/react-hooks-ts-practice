@@ -10,12 +10,17 @@
       <li>
         <router-link to="/mine">我的</router-link>
       </li>
+      <li>
+        <router-link to="/animation">动画</router-link>
+      </li>
     </ul>
-    <div class="change-content">
-      <keep-alive>
-        <router-view/>
-      </keep-alive>
-    </div>
+    <transition name="slide-fade">
+      <div class="change-content" :key="$route.fullPath">
+        <keep-alive>
+          <router-view/>
+        </keep-alive>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -30,6 +35,24 @@ export default {
   color: red;
 }
 
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-fade-enter-active {
+  transition: all 1s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 1s ease;
+}
+
+.slide-fade-enter {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+}
 .change-content {
   position: fixed;
   top: 100px;

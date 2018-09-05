@@ -5,11 +5,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'Goods'
-  }
+export default {
+  name: "Goods"
+};
 </script>
 
 <style lang="less" scoped>
-
+.wk-goods {
+  height: 100%;
+  background-color: skyblue;
+}
 </style>

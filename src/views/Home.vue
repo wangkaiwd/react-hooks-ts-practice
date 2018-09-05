@@ -11,4 +11,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.wk-home {
+  height: 100%;
+  background-color: pink;
+}
 </style>
