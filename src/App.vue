@@ -14,7 +14,12 @@
         <router-link to="/animation">动画</router-link>
       </li>
     </ul>
-    <transition name="slide-fade">
+    <transition 
+      name="slide-fade" 
+      mode="out-in"
+      enter-active-class="animated bounceInLeft"
+      leave-active-class="animated bounceOutRight"
+    >
       <div class="change-content" :key="$route.fullPath">
         <keep-alive>
           <router-view/>
@@ -37,22 +42,19 @@ export default {
 
 /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */
-.slide-fade-enter-active {
-  transition: all 1s ease;
-}
+// .slide-fade-enter-active,
+// .slide-fade-leave-active {
+//   transition: all 1s ease-in-out;
+// }
 
-.slide-fade-leave-active {
-  transition: all 1s ease;
-}
-
-.slide-fade-enter {
-  transform: translateX(100px);
-  opacity: 0;
-}
-
-.slide-fade-leave-to {
-  opacity: 0;
-}
+// .slide-fade-enter {
+//   transform: translateX(100px) rotate(100deg);
+//   opacity: 0;
+// }
+// .slide-fade-leave-to {
+//   transform: translateX(-100px);
+//   opacity: 0;
+// }
 .change-content {
   position: fixed;
   top: 100px;
