@@ -93,3 +93,10 @@
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/react-switch-code8.png)
 
 现在我们已经得到了一个灵活的、模块化的`Switch`组件。
+
+### 结语
+这是一篇根据原文使用`TypeScript`改写的一篇译文，原文地址在这里：
+* Build a React Switch Toggle Component(https://upmostly.com/tutorials/build-a-react-switch-toggle-component)
+
+本文源代码都在我的`github`仓库：
+* [源代码](https://github.com/wangkaiwd/react-hooks-TS-practice)
