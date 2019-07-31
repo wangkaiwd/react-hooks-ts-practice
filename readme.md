@@ -1,4 +1,8 @@
 ## 开发一个`React`开关切换组件
+> 这是一篇译文：
+> * 原文地址：[Build a React Switch Toggle Component](https://upmostly.com/tutorials/build-a-react-switch-toggle-component)
+> * 本文源代码： https://github.com/wangkaiwd/react-hooks-TS-practice
+
 ![](https://upmostly.com/wp-content/uploads/react-switch-toggle-component.jpg)
 学习如何使用原生`HTML`的复选框来开发一个`React`开关组件，在这个过程你将会学到许多`React`复选框相关的知识。
 
@@ -93,10 +97,3 @@
 ![](https://raw.githubusercontent.com/wangkaiwd/drawing-bed/master/react-switch-code8.png)
 
 现在我们已经得到了一个灵活的、模块化的`Switch`组件。
-
-### 结语
-这是一篇根据原文使用`TypeScript`改写的一篇译文，原文地址在这里：
-* Build a React Switch Toggle Component(https://upmostly.com/tutorials/build-a-react-switch-toggle-component)
-
-本文源代码都在我的`github`仓库：
-* [源代码](https://github.com/wangkaiwd/react-hooks-TS-practice)
