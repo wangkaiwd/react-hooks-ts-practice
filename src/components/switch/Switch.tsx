@@ -5,11 +5,12 @@ import React from 'react';
 import './Switch.scss';
 
 interface Props {
-  checked: boolean,
-  onChange: (e: React.ChangeEvent) => void
+  checked: boolean;
+  onChange: (e: React.ChangeEvent) => void;
+  checkedColor?: string;
 }
 
-const Switch: React.FunctionComponent<Props> = ({ checked, onChange }) => {
+const Switch: React.FunctionComponent<Props> = ({ checked, onChange, checkedColor }) => {
   return (
     <div className={'self-ui-switch'}>
       <input
@@ -20,7 +21,7 @@ const Switch: React.FunctionComponent<Props> = ({ checked, onChange }) => {
         type="checkbox"
       />
       <label
-        style={{ backgroundColor: checked ? '#06D6A0' : undefined }}
+        style={{ backgroundColor: checked ? checkedColor : undefined }}
         className={'self-ui-switch-label'}
         htmlFor="switch-input"
       >
@@ -28,6 +29,9 @@ const Switch: React.FunctionComponent<Props> = ({ checked, onChange }) => {
       </label>
     </div>
   );
+};
+Switch.defaultProps = {
+  checkedColor: '#06D6A0'
 };
 
 export default Switch;
