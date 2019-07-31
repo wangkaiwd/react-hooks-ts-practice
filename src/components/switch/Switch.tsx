@@ -13,6 +13,8 @@ interface Props {
 
 const Switch: React.FunctionComponent<Props> = (props) => {
   const { checked, onChange, checkedColor } = props;
+  // useRef返回一个可变的ref对象，其.current属性被初始化为传入的参数(initialValue)
+  // 返回的ref对象在组件的整个生命周期内保持不变
   const idRef = useRef<string>(creteNewId());
   return (
     <div className={'self-ui-switch'}>
