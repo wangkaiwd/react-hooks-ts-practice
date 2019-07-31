@@ -177,4 +177,32 @@ export default App;
 ### 切换时改变背景色
 如果你完成了上边的代码，会发现`Switch`组件在切换状态的时候视觉`UI`上并没有什么不同。
 
+由于我们能够使用`Switch`组件中通过父组件`props`传递下来的`checked`属性，所以我们只需要对代码做一个很简单的改动就可以改变`Switch`组件的背景色。
+
+修改`Switch.tsx`组件中的`label`元素，代码如下：  
+```typescript jsx
+...
+<label
+    style={{ backgroundColor: checked ? '#06D6A0' : undefined }}
+    className={'self-ui-switch-label'}
+    htmlFor="switch-input"
+  >
+  <span className={'self-ui-switch-button'}/>
+</label>
+...
+```
+
+保存组件，切换到你的浏览器页面你会看到一个完整工作的`Switch`组件。当`Switch`组件激活的时候会变成绿色，而当它关闭的时候会变为灰色。
+
+到这里，我们已经拥有了一个完整功能的`React` `Switch`组件，它可以切换、更改`value`值并且会在激活的时候变为绿色。  
+
+如果你想要知道如何能够通过指定的激活颜色来扩展我们的`Switch`组件，那么请继续往下阅读。
 ### 指定切换颜色
+开发一个灵活的`React`组件并且能够让它应用于多种不同的场景是一个特别好的编程实践。例如，我们可能将会在下面的情况使用`Switch`组件：  
+* 在登录表单中，告诉网站要记住你的用户认证信息
+* 在一个设置页面
+* 在模态框中用来删除用户账户
+
+这些只是3个简单的例子，网页中还有数不尽的`Switch`组件的应用场景。
+
+现在有一个问题，我们的`Switch`组件在激活的时候只能显示绿色。

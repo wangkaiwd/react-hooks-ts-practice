@@ -9,17 +9,18 @@ interface Props {
   onChange: (e: React.ChangeEvent) => void
 }
 
-const Switch: React.FunctionComponent<Props> = (props) => {
+const Switch: React.FunctionComponent<Props> = ({ checked, onChange }) => {
   return (
     <div className={'self-ui-switch'}>
       <input
-        checked={props.checked}
-        onChange={props.onChange}
+        checked={checked}
+        onChange={onChange}
         id={'switch-input'}
         className={'self-ui-switch-input'}
         type="checkbox"
       />
       <label
+        style={{ backgroundColor: checked ? '#06D6A0' : undefined }}
         className={'self-ui-switch-label'}
         htmlFor="switch-input"
       >
