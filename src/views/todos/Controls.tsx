@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { Input } from 'antd';
 import { TodoProps } from '@/views/todos/Todos';
+import { connect } from 'react-redux';
+import { addTodo } from '@/store/actionCreator';
 
 interface Props {
   addTodo: (todo: TodoProps) => void;
@@ -32,4 +34,8 @@ const Controls: React.FC<Props> = ({ addTodo }) => {
   );
 };
 
-export default Controls;
+export default connect(
+  null,
+  (dispatch) => ({
+    addTodo: (todo: TodoProps) => dispatch(addTodo(todo))
+  }))(Controls);
