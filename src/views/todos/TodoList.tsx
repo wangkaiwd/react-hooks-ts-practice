@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Button, Checkbox, List } from 'antd';
 import { connect } from 'react-redux';
 import { TodoProps } from '@/views/todos/Todos';
@@ -12,20 +12,19 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({ todoList, onDeleteTodo, onToggleCompleteStatus }) => {
   return (
-    <Fragment>
-      <ul>
-        {
-          todoList.map((item, i) => (
-            <li key={item.id}>
-              <Checkbox onChange={() => onToggleCompleteStatus(item)} value={item.complete}
-                        style={{ marginRight: '6px' }}/>
-              <span>{item.text}</span>
-              <Button onClick={() => onDeleteTodo(item)} type="link" icon="delete" style={{ marginLeft: 'auto' }}/>
-            </li>
-          ))
-        }
-      </ul>
-    </Fragment>
+    <List
+      rowKey={'id'}
+      style={{ marginTop: '12px' }}
+      bordered
+      dataSource={todoList}
+      renderItem={item => (
+        <List.Item>
+          <Checkbox onChange={() => onToggleCompleteStatus(item)} value={item.complete} style={{ marginRight: '6px' }}/>
+          <span>{item.text}</span>
+          <Button onClick={() => onDeleteTodo(item)} type="link" icon="delete" style={{ marginLeft: 'auto' }}/>
+        </List.Item>
+      )}
+    />
   );
 };
 
