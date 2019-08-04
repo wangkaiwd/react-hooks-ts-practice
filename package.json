@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "antd": "^3.20.7",
-    "node-sass": "^4.12.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0"
   },
   "scripts": {
     "start": "env-cmd -e dev -r .env-cmdrc craco start",
@@ -42,6 +42,7 @@
     "react-scripts": "3.0.1",
     "typescript": "3.5.3",
     "webpack-bundle-analyzer": "^3.3.2",
-    "webpackbar": "^3.2.0"
+    "webpackbar": "^3.2.0",
+    "node-sass": "^4.12.0"
   }
 }
