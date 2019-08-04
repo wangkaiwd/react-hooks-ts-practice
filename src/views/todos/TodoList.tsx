@@ -1,24 +1,24 @@
 import React from 'react';
 import { Button, Checkbox, List } from 'antd';
+import { TodoProps } from '@/views/todos/Todos';
 
-const data = [
-  'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.',
-];
-const TodoList = () => {
+interface Props {
+  todoList: TodoProps[];
+  onDeleteTodo: (todo: TodoProps) => void;
+  onToggleCompleteStatus: (todo: TodoProps) => void
+}
+
+const TodoList: React.FC<Props> = ({ todoList, onDeleteTodo, onToggleCompleteStatus }) => {
   return (
     <List
       style={{ marginTop: '12px' }}
       bordered
-      dataSource={data}
+      dataSource={todoList}
       renderItem={item => (
         <List.Item>
-          <Checkbox style={{ marginRight: '6px' }}/>
-          <span>{item}</span>
-          <Button type="link" icon="delete" style={{ marginLeft: 'auto' }}/>
+          <Checkbox onChange={() => onToggleCompleteStatus(item)} value={item.complete} style={{ marginRight: '6px' }}/>
+          <span>{item.text}</span>
+          <Button onClick={() => onDeleteTodo(item)} type="link" icon="delete" style={{ marginLeft: 'auto' }}/>
         </List.Item>
       )}
     />
