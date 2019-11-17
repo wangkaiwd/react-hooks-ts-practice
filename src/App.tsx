@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import Todos from '@/views/todos/Todos';
+import React from 'react';
+import ClassVsHooks, { ClassComponents } from '@/views/classVsHooks/ClassVsHooks';
 
 const App: React.FC = () => {
   return (
     <div className={'app'}>
-      <Todos/>
+      <ClassVsHooks/>
+      <ClassComponents/>
     </div>
   );
 };
