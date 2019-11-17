@@ -19,7 +19,7 @@ const Controls: React.FC<Props> = ({ addTodo }) => {
     addTodo({
       id: initId.current++,
       text: value,
-      complete: false
+      complete: false,
     });
     setValue('');
   };
@@ -37,5 +37,5 @@ const Controls: React.FC<Props> = ({ addTodo }) => {
 export default connect(
   null,
   (dispatch) => ({
-    addTodo: (todo: TodoProps) => dispatch(addTodo(todo))
+    addTodo: (todo: TodoProps) => dispatch(addTodo(todo)),
   }))(Controls);
