@@ -11,7 +11,9 @@ const ClassVsHooks = () => {
 export default ClassVsHooks;
 
 interface Props {
-
+  firstName: string;
+  lastName: string;
+  onChange: (newFirstName: string) => void
 }
 interface State {
   n: number;
@@ -36,7 +38,11 @@ class ClassComponents extends React.Component<Props, State> {
   // 原型上的方法是共有的，并不会在每次使用new创建实例的时候都进行绑定。而自身属性在每次创建实例的时候都需要添加，会浪费内存
   // 有关属性方法，静态方法，原型方法的讨论：https://stackoverflow.com/a/1635143/11720536
   onClick = () => {
-    console.log(this.state.n);
+    const { n } = this.state;
+    const isEven: boolean = n % 2 === 0;
+    const { onChange, firstName } = this.props;
+    onChange(isEven ? firstName + n : firstName);
+    this.setState({ n: n + 1 });
   };
   // onClick = function (this: undefined) {
   //   console.log('this', this);
@@ -50,11 +56,18 @@ class ClassComponents extends React.Component<Props, State> {
   // onClick2 = () => {
   //   console.log(this);
   // };
+  // 可以使用get set方法
+  get fullName () {
+    const { lastName, firstName } = this.props;
+    console.log(firstName);
+    return firstName + lastName;
+  }
 
   render () {
     return (
       <div>
         <button onClick={this.onClick}>click me</button>
+        {this.fullName}
       </div>
     );
   }
