@@ -22,10 +22,31 @@ class ClassComponents extends React.Component<Props, State> {
     n: 1,
   };
 
-  onClick () {
-    // undefined
-    console.log(this);
-  }
+  // constructor (props: Props) {
+  //   super(props);
+  //
+  //   this.onClick2 = () => {
+  //     console.log(this);
+  //   };
+  // }
+
+  // javascript 新的class属性写法，当属性为函数时可以这样写
+  // @see: https://github.com/tc39/proposal-class-fields
+  onClick = () => {
+    console.log(this.state.n);
+  };
+  // onClick = function (this: undefined) {
+  //   console.log('this', this);
+  // };
+
+  // onClick () {
+  //   // undefined
+  //   console.log(this);
+  // }
+
+  // onClick2 = () => {
+  //   console.log(this);
+  // };
 
   render () {
     return (
