@@ -16,6 +16,7 @@ const myUseState = <T extends unknown> (initialValue: T): [T, (newValue: T) => v
   _index++;
   return [state, setState];
 };
+// 关于react-hooks原理文章介绍： https://github.com/brickspert/blog/issues/26
 const Counter = () => {
   // setN会重新渲染Counter,然后会重新执行myUseState
   const [n, setN] = myUseState(0);
