@@ -1,0 +1,14 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .link-content {
+    padding: 12px;
+    border: 1px solid pink;
+  }
+  .demo-content {
+    padding: 12px;
+    border: 1px solid green;
+    flex: 1;
+  }
+}
