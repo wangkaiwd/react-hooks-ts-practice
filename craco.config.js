@@ -17,9 +17,6 @@ const generatePlugins = () => {
 };
 
 module.exports = {
-  eslint: {
-    enable: false,
-  },
   webpack: {
     devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
     alias: {
