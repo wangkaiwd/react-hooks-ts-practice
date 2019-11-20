@@ -1,5 +1,6 @@
 import Counter from '@/views/myUseState/myUseState';
 import ClassVsHooks from '@/views/classVsHooks/ClassVsHooks';
+import NewState from '@/views/myUseState/newState';
 
 const routerConfig = [
   {
@@ -11,6 +12,11 @@ const routerConfig = [
     path: '/hooksComponent',
     title: 'hooksComponent',
     component: ClassVsHooks,
+  },
+  {
+    path: '/newState',
+    title: 'newState',
+    component: NewState,
   },
 ];
 export default routerConfig;
