@@ -1,9 +1,10 @@
 import React from 'react';
+import { Icon } from 'react-deep6673';
 
 const ClassVsHooks = () => {
   return (
     <div>
-      ClassVsHooks
+      <Icon/>
     </div>
   );
 };
