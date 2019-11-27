@@ -4,6 +4,7 @@ import NewState from '@/views/myUseState/newState';
 import UseState from '@/views/hooksSpecific/useState';
 import UseReducer from '@/views/hooksSpecific/useReducer';
 import ComplexUseReducer from '@/views/hooksSpecific/complexUseReducer';
+import UseContext from '@/views/hooksSpecific/useContext';
 
 const routerConfig = [
   {
@@ -35,6 +36,11 @@ const routerConfig = [
     path: '/complexUseReducer',
     title: 'complexUseReducer',
     component: ComplexUseReducer,
+  },
+  {
+    path: '/useContext',
+    title: 'useContext',
+    component: UseContext,
   },
 ];
 export default routerConfig;
