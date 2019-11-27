@@ -3,6 +3,7 @@ import ClassVsHooks from '@/views/classVsHooks/ClassVsHooks';
 import NewState from '@/views/myUseState/newState';
 import UseState from '@/views/hooksSpecific/useState';
 import UseReducer from '@/views/hooksSpecific/useReducer';
+import ComplexUseReducer from '@/views/hooksSpecific/complexUseReducer';
 
 const routerConfig = [
   {
@@ -29,6 +30,11 @@ const routerConfig = [
     path: '/useReducer',
     title: 'useReducer',
     component: UseReducer,
+  },
+  {
+    path: '/complexUseReducer',
+    title: 'complexUseReducer',
+    component: ComplexUseReducer,
   },
 ];
 export default routerConfig;
