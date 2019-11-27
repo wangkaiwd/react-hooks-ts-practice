@@ -5,15 +5,14 @@ import React, { useReducer } from 'react';
 interface State {
   n: number;
 }
+// discriminated unions
 type Action = { type: 'add', value: number } | { type: 'subtract', value: number }
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'add':
       return { n: state.n + action.value };
-      break;
     case 'subtract':
       return { n: state.n - action.value };
-      break;
     default:
       return { ...state };
   }
