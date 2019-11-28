@@ -5,42 +5,16 @@ import UseState from '@/views/hooksSpecific/useState';
 import UseReducer from '@/views/hooksSpecific/useReducer';
 import ComplexUseReducer from '@/views/hooksSpecific/complexUseReducer';
 import UseContext from '@/views/hooksSpecific/useContext';
+import UseEffect from '@/views/hooksSpecific/useEffect';
 
 const routerConfig = [
-  {
-    path: '/myUseState',
-    title: 'myUseState',
-    component: Counter,
-  },
-  {
-    path: '/hooksComponent',
-    title: 'hooksComponent',
-    component: ClassVsHooks,
-  },
-  {
-    path: '/newState',
-    title: 'newState',
-    component: NewState,
-  },
-  {
-    path: '/useState',
-    title: 'useState',
-    component: UseState,
-  },
-  {
-    path: '/useReducer',
-    title: 'useReducer',
-    component: UseReducer,
-  },
-  {
-    path: '/complexUseReducer',
-    title: 'complexUseReducer',
-    component: ComplexUseReducer,
-  },
-  {
-    path: '/useContext',
-    title: 'useContext',
-    component: UseContext,
-  },
+  { path: '/myUseState', name: 'myUseState', component: Counter, icon: 'smile' },
+  { path: '/hooksComponent', name: 'hooksComponent', component: ClassVsHooks },
+  { path: '/newState', name: 'newState', component: NewState },
+  { path: '/useState', name: 'useState', component: UseState },
+  { path: '/useReducer', name: 'useReducer', component: UseReducer },
+  { path: '/complexUseReducer', name: 'complexUseReducer', component: ComplexUseReducer },
+  { path: '/useContext', name: 'useContext', component: UseContext },
+  { path: '/useEffect', name: 'useEffect', component: UseEffect },
 ];
 export default routerConfig;

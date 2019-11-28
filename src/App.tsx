@@ -1,41 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import routerConfig from '@/config/routerConfig';
+import ProLayout, { MenuDataItem, PageHeaderWrapper } from '@ant-design/pro-layout';
+import { Card } from 'antd';
 
-const App: React.FC = () => {
-  // const [nameConfig, setNameConfig] = useState({
-  //   firstName: 'w',
-  //   lastName: 'k',
-  // });
-  // const { lastName, firstName } = nameConfig;
-  // const changeName = (newFirstName: string): void => {
-  //   nameConfig.firstName = newFirstName;
-  //   setNameConfig({ ...nameConfig });
-  // };
+const App: React.FC = (props) => {
+  const [selectedKeys, setSelectedKeys] = useState([window.location.pathname]);
+  const onClick = (menuItemProps: MenuDataItem) => {
+    setSelectedKeys([menuItemProps.path]);
+  };
   return (
-    <Router>
-      <div className="app">
-        <div className="page-wrapper">
-          <ul className="link-content">
-            {routerConfig.map(route => (
-              <li key={route.path}>
-                <Link to={route.path}>{route.title}</Link>
-              </li>
-            ))}
-          </ul>
-          <div className="demo-content">
-            <Switch>
-              {routerConfig.map(route => (
-                <Route path={route.path} key={route.path}>
-                  <route.component/>
-                </Route>
-              ))}
-            </Switch>
-          </div>
-        </div>
-      </div>
-    </Router>
+    <ProLayout
+      disableContentMargin={false}
+      menuDataRender={() => routerConfig}
+      menuItemRender={(menuItemProps, defaultDom) => {
+        return <Link to={menuItemProps.path} onClick={() => onClick(menuItemProps)}>
+          {defaultDom}
+        </Link>;
+      }}
+      menuProps={{ selectedKeys }}
+    >
+      <Card bordered={false}>
+        {props.children}
+      </Card>
+    </ProLayout>
   );
 };
 export default App;
