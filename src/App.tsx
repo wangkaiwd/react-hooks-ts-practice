@@ -18,6 +18,7 @@ const App: React.FC = (props) => {
   return (
     <ProLayout
       disableContentMargin={false}
+      title={'React Hooks'}
       menuDataRender={() => routerConfig}
       menuItemRender={(menuItemProps, defaultDom) => {
         return <Link to={menuItemProps.path} onClick={() => onClick(menuItemProps)}>
