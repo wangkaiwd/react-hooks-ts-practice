@@ -8,7 +8,7 @@ import UseContext from '@/views/hooksSpecific/useContext';
 import UseEffect from '@/views/hooksSpecific/useEffect';
 
 const routerConfig = [
-  { path: '/myUseState', name: 'myUseState', component: Counter, icon: 'smile' },
+  // { path: '/myUseState', name: 'myUseState', component: Counter, icon: 'smile' },
   { path: '/hooksComponent', name: 'hooksComponent', component: ClassVsHooks },
   { path: '/newState', name: 'newState', component: NewState },
   { path: '/useState', name: 'useState', component: UseState },

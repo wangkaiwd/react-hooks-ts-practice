@@ -1,24 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '@/assets/styles/base.scss';
-import routerConfig from '@/config/routerConfig';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-const PageHome = () => {
-  return (
-    <App>
-      <Switch>
-        {routerConfig.map(route => (
-          <Route path={route.path} key={route.path}>
-            <route.component/>
-          </Route>
-        ))}
-      </Switch>
-    </App>
-  );
-};
+import { BrowserRouter as Router } from 'react-router-dom';
+import PageHome from '@/views/PageHome';
 
 ReactDOM.render(
   <Router>
