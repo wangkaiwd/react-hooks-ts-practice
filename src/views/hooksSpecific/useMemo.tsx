@@ -1,4 +1,4 @@
-import React, { useMemo, useState, Fragment } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
 import { Button, Typography } from 'antd';
 
 const { Title } = Typography;
@@ -16,9 +16,13 @@ const UseMemo = () => {
   //
   // };
   // 使用useMemo优化,类似于vue中的计算属性
-  const onClickChild = useMemo(() => {
-    return () => {};
-  }, [m]);
+  // const onClickChild = useMemo(() => {
+  //   return () => {};
+  // }, [m]);
+
+  // 使用useCallback来处理函数，useMemo(() => () => {})等价于 useCallback(() => {})
+  // 是useMemo处理函数时的一个语法糖
+  const onClickChild = useCallback(() => {}, [m]);
   return (
     <Fragment>
       <Title level={2}>n:{n}</Title>
@@ -40,7 +44,7 @@ const Child: React.FC<ChildProps> = (props) => {
   console.log(props.name);
   return (
     <div>
-      I am child
+      I am {props.name}
     </div>
   );
 };
