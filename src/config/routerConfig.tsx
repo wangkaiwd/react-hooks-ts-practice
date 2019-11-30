@@ -6,6 +6,7 @@ import UseReducer from '@/views/hooksSpecific/useReducer';
 import ComplexUseReducer from '@/views/hooksSpecific/complexUseReducer';
 import UseContext from '@/views/hooksSpecific/useContext';
 import UseEffect from '@/views/hooksSpecific/useEffect';
+import UseMemo from '@/views/hooksSpecific/useMemo';
 
 const routerConfig = [
   // { path: '/myUseState', name: 'myUseState', component: Counter, icon: 'smile' },
@@ -16,5 +17,6 @@ const routerConfig = [
   { path: '/complexUseReducer', name: 'complexUseReducer', component: ComplexUseReducer },
   { path: '/useContext', name: 'useContext', component: UseContext },
   { path: '/useEffect', name: 'useEffect', component: UseEffect },
+  { path: '/useMemo', name: 'useMemo', component: UseMemo },
 ];
 export default routerConfig;
