@@ -1,7 +1,7 @@
 import App from '@/App';
 import { Route, Switch } from 'react-router-dom';
-import routerConfig from '@/config/routerConfig';
 import React from 'react';
+import routerConfig from '@/config/routerConfig';
 
 const PageHome = () => {
   return (

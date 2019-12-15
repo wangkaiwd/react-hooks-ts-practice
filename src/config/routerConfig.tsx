@@ -8,6 +8,7 @@ import UseContext from '@/views/hooksSpecific/useContext';
 import UseEffect from '@/views/hooksSpecific/useEffect';
 import UseMemo from '@/views/hooksSpecific/useMemo';
 import UseRef from '@/views/hooksSpecific/useRef';
+import ControlVersusUnControl from '@/views/controlVersusUnControl/controlVersusUnControl';
 
 const routerConfig = [
   // { path: '/myUseState', name: 'myUseState', component: Counter, icon: 'smile' },
@@ -20,5 +21,6 @@ const routerConfig = [
   { path: '/useEffect', name: 'useEffect', component: UseEffect },
   { path: '/useMemo', name: 'useMemo', component: UseMemo },
   { path: '/useRef', name: 'useRef', component: UseRef },
+  { path: '/controlAndUnControl', name: 'controlAndUnControl', component: ControlVersusUnControl },
 ];
 export default routerConfig;
