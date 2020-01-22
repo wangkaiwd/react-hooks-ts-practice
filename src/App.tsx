@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Card, List } from 'antd';
+import { Card, List } from 'antd';
 
 const App: React.FC = () => {
   const [data, setData] = useState<{ hits: any[] }>({ hits: [] });
