@@ -1,7 +1,6 @@
 const path = require('path');
 const WebpackBar = require('webpackbar');
 const CracoAntDesignPlugin = require('craco-antd');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const isAnalysis = process.env.REACT_APP_MODE === 'analysis', isDev = process.env.NODE_ENV === 'development',
   isProd = process.env.NODE_ENV === 'production';
@@ -10,7 +9,6 @@ const absPath = (dir) => path.resolve(__dirname, dir);
 const generatePlugins = () => {
   const plugins = [
     new WebpackBar(),
-    new HardSourceWebpackPlugin(),
   ];
   if (isAnalysis) {
     plugins.push(new BundleAnalyzerPlugin());
@@ -20,14 +18,14 @@ const generatePlugins = () => {
 
 module.exports = {
   eslint: {
-    enable: false
+    enable: false,
   },
   webpack: {
     devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
     alias: {
-      '@': absPath('./src')
+      '@': absPath('./src'),
     },
-    plugins: generatePlugins()
+    plugins: generatePlugins(),
   },
-  plugins: [{ plugin: CracoAntDesignPlugin }]
+  plugins: [{ plugin: CracoAntDesignPlugin }],
 };
