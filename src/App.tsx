@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Button, Card, List } from 'antd';
 
 const App: React.FC = () => {
   const [data, setData] = useState<{ hits: any[] }>({ hits: [] });
@@ -11,13 +12,13 @@ const App: React.FC = () => {
     fetchData().then();
   }, []);
   return (
-    <ul>
-      {data.hits.map(item => (
-        <li key={item.objectId}>
+    <Card bordered={false}>
+      <List dataSource={data.hits} renderItem={(item) => (
+        <List.Item>
           <a href={item.url}>{item.title}</a>
-        </li>
-      ))}
-    </ul>
+        </List.Item>
+      )}/>
+    </Card>
   );
 };
 export default App;
