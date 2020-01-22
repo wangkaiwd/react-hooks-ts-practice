@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
-import Switch from '@/components/switch/Switch';
+import React, { useEffect, useState } from 'react';
 
 const App: React.FC = () => {
-  const [checked, setChecked] = useState(false);
-  const [checked1, setChecked1] = useState(false);
+  const [data, setData] = useState<{ hits: any[] }>({ hits: [] });
   return (
-    <div className={'app'}>
-      <Switch
-        checked={checked}
-        checkedColor={'#EF476F'}
-        onChange={() => setChecked(!checked)}
-      />
-      <Switch
-        checked={checked1}
-        onChange={() => setChecked1(!checked1)}
-      />
-    </div>
+    <ul>
+      {data.hits.map(item => (
+        <li key={item.objectId}>
+          <a href={item.url}>{item.title}</a>
+        </li>
+      ))}
+    </ul>
   );
 };
 export default App;
