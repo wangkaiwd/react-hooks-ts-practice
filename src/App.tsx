@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, List } from 'antd';
+import { IData } from '@/responseTypes';
 
 const App: React.FC = () => {
-  const [data, setData] = useState<{ hits: any[] }>({ hits: [] });
+  const [data, setData] = useState<IData>({ hits: [] });
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios('https://hn.algolia.com/api/v1/search?query=react');
-      setData(result.data);
+      setData({ hits: result.data.hits });
     };
     fetchData().then();
   }, []);
