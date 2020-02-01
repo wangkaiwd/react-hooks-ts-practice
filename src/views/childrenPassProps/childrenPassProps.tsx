@@ -1,6 +1,8 @@
 import React, { Children, cloneElement, FC, FunctionComponentElement, ReactElement, ReactNode, useState } from 'react';
 import { Button, Typography } from 'antd';
-
+// 父组件为props.children的子组件传参的俩种方法：
+//  1. 遍历所有子组件并通过React.cloneElement()克隆一个新的有props的组件进行展示（也可以用props.type来进行展示）
+//  2. 通过render props 将函数作为父组件的子组件，并在父组件内执行的时候将props作为参数传入
 const { Title } = Typography;
 const Parent: FC = (props) => {
   const [count, setCount] = useState(0);
