@@ -10,6 +10,7 @@ import UseMemo from '@/views/hooksSpecific/useMemo';
 import UseRef from '@/views/hooksSpecific/useRef';
 import ControlVersusUnControl from '@/views/controlVersusUnControl/controlVersusUnControl';
 import FetchData from '@/views/fetchData/fetchData';
+import ChildrenPassProps from '@/views/childrenPassProps/childrenPassProps';
 
 const routerConfig = [
   { path: '/hooksComponent', name: 'hooksComponent', component: ClassVsHooks },
@@ -23,5 +24,6 @@ const routerConfig = [
   { path: '/useRef', name: 'useRef', component: UseRef },
   { path: '/controlAndUnControl', name: 'controlAndUnControl', component: ControlVersusUnControl },
   { path: '/fetchData', name: 'fetchData', component: FetchData },
+  { path: '/childrenPassProps', name: 'childrenPassProps', component: ChildrenPassProps },
 ];
 export default routerConfig;
