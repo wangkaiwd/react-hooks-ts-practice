@@ -6,14 +6,17 @@ import { IData } from '@/responseTypes';
 const App: React.FC = () => {
   const [data, setData] = useState<IData>({ hits: [] });
   const [query, setQuery] = useState('redux');
-  const [search, setSearch] = useState('redux');
+  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=redux');
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`https://hn.algolia.com/api/v1/search?query=${search}`);
+      setIsLoading(true);
+      const result = await axios(url);
       setData({ hits: result.data.hits });
+      setIsLoading(false);
     };
     fetchData().then();
-  }, [search]);
+  }, [url]);
   return (
     <Card bordered={false}>
       <Input
@@ -21,8 +24,8 @@ const App: React.FC = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <Button onClick={() => setSearch(query)}>Search</Button>
-      <List dataSource={data.hits} renderItem={(item) => (
+      <Button onClick={() => setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`)}>Search</Button>
+      <List dataSource={data.hits} loading={isLoading} renderItem={(item) => (
         <List.Item>
           <a href={item.url}>{item.title}</a>
         </List.Item>
