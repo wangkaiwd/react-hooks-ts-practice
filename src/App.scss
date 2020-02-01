@@ -1,14 +1,15 @@
-.page-wrapper {
+.app {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  .link-content {
-    padding: 12px;
-    border: 1px solid pink;
+  height: 100vh;
+  .menu {
+    width: 200px;
+    height: 100%;
   }
-  .demo-content {
+  .content {
     padding: 12px;
     border: 1px solid green;
     flex: 1;
+    height: 100%;
+    overflow: auto;
   }
 }
