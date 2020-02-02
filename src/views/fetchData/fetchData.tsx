@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { Button, Card, Input, List } from 'antd';
+import useHackerNewsApi from '@/views/fetchData/useHackerNewsApi';
 import { IData } from '@/responseTypes';
 
 const FetchData: React.FC = () => {
-  const [data, setData] = useState<IData>({ hits: [] });
   const [query, setQuery] = useState('redux');
-  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=redux');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const result = await axios(url);
-        setData({ hits: result.data.hits });
-      } catch (e) {
-        setIsError(true);
-      }
-      setIsLoading(false);
-    };
-    fetchData().then();
-  }, [url]);
+  const [{ data, isLoading, isError }, setUrl] = useHackerNewsApi<IData>({ hits: [] }, 'https://hn.algolia.com/api/v1/search?query=redux');
   return (
     <Card bordered={false}>
-      <Input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <Button onClick={() => setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`)}>Search</Button>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`);
+      }}>
+        <Input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <Button htmlType="submit">Search</Button>
+      </form>
       {isError ?
         <div>something went wrong...</div>
         :
