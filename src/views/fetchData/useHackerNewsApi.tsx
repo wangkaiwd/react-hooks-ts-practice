@@ -1,12 +1,63 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, Reducer, SetStateAction, useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 
 interface IResult<T = any> {
-  data: T;
+  data: T | null;
   isLoading: boolean;
   isError: boolean;
 }
 
+type IAction<T = any> = {
+  type: 'pending';
+} | {
+  type: 'success';
+  payload: T
+} | {
+  type: 'error';
+}
+const dataFetchReducer = <T extends any> (state: IResult<T>, action: IAction<T>): IResult<T> => {
+  switch (action.type) {
+    case 'pending':
+      return {
+        data: null,
+        isLoading: true,
+        isError: false
+      };
+    case 'success':
+      return {
+        data: action.payload,
+        isLoading: false,
+        isError: false
+      };
+    case 'error':
+      return {
+        data: null,
+        isLoading: false,
+        isError: true
+      };
+  }
+};
+
+const useDataApi = <T extends any> (initialData: T, initialUrl: string) => {
+  const [state, dispatch] = useReducer<Reducer<IResult<T>, IAction<T>>>(dataFetchReducer, {
+    data: initialData,
+    isError: false,
+    isLoading: false
+  });
+  const [url, setUrl] = useState(initialUrl);
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: 'pending' });
+      try {
+        const result = await axios(url);
+        dispatch({ type: 'success', payload: result.data });
+      } catch (e) {
+        dispatch({ type: 'error' });
+      }
+    };
+  }, [url]);
+  return [state, setUrl];
+};
 const useHackerNewsApi = <T extends any> (initialData: T, initialUrl: string): [IResult<T>, Dispatch<SetStateAction<string>>] => {
   const [data, setData] = useState<T>(initialData);
   const [url, setUrl] = useState(initialUrl);
