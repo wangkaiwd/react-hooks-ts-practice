@@ -8,29 +8,32 @@ interface IResult<T = any> {
 }
 
 type IAction<T = any> = {
-  type: 'pending';
+  type: 'FETCH_INIT';
 } | {
-  type: 'success';
+  type: 'FETCH_SUCCESS';
   payload: T
 } | {
-  type: 'error';
+  type: 'FETCH_FAILURE';
 }
 const dataFetchReducer = <T extends any> (state: IResult<T>, action: IAction<T>): IResult<T> => {
   switch (action.type) {
-    case 'pending':
+    case 'FETCH_INIT':
       return { ...state, isLoading: true };
-    case 'success':
+    case 'FETCH_SUCCESS':
       return {
+        ...state,
         data: action.payload,
         isLoading: false,
         isError: false
       };
-    case 'error':
+    case 'FETCH_FAILURE':
       return { ...state, isError: true };
+    default:
+      throw new Error();
   }
 };
 
-const useDataApi = <T extends any> (initialData: T, initialUrl: string) => {
+const useDataApi = <T extends any> (initialData: T, initialUrl: string): [IResult<T>, Dispatch<SetStateAction<string>>] => {
   const [state, dispatch] = useReducer<Reducer<IResult<T>, IAction<T>>>(dataFetchReducer, {
     data: initialData,
     isError: false,
@@ -39,14 +42,15 @@ const useDataApi = <T extends any> (initialData: T, initialUrl: string) => {
   const [url, setUrl] = useState(initialUrl);
   useEffect(() => {
     const fetchData = async () => {
-      dispatch({ type: 'pending' });
+      dispatch({ type: 'FETCH_INIT' });
       try {
         const result = await axios(url);
-        dispatch({ type: 'success', payload: result.data });
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (e) {
-        dispatch({ type: 'error' });
+        dispatch({ type: 'FETCH_FAILURE' });
       }
     };
+    fetchData().then();
   }, [url]);
   return [state, setUrl];
 };
@@ -73,3 +77,4 @@ const useHackerNewsApi = <T extends any> (initialData: T, initialUrl: string): [
 };
 
 export default useHackerNewsApi;
+export { useDataApi };

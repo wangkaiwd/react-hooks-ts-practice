@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Card, Input, List } from 'antd';
-import useHackerNewsApi from '@/views/fetchData/useHackerNewsApi';
+import useHackerNewsApi, { useDataApi } from '@/views/fetchData/useHackerNewsApi';
 import { IData } from '@/responseTypes';
 
 const FetchData: React.FC = () => {
   const [query, setQuery] = useState('redux');
-  const [{ data, isLoading, isError }, setUrl] = useHackerNewsApi<IData>({ hits: [] }, 'https://hn.algolia.com/api/v1/search?query=redux');
+  const [{ data, isLoading, isError }, setUrl] = useDataApi<IData>({ hits: [] }, 'https://hn.algolia.com/api/v1/search?query=redux');
   return (
     <Card bordered={false}>
       <form onSubmit={(e) => {
