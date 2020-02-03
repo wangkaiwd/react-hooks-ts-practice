@@ -2,7 +2,7 @@ import { Dispatch, Reducer, SetStateAction, useEffect, useReducer, useState } fr
 import axios from 'axios';
 
 interface IResult<T = any> {
-  data: T | null;
+  data: T;
   isLoading: boolean;
   isError: boolean;
 }
@@ -18,11 +18,7 @@ type IAction<T = any> = {
 const dataFetchReducer = <T extends any> (state: IResult<T>, action: IAction<T>): IResult<T> => {
   switch (action.type) {
     case 'pending':
-      return {
-        data: null,
-        isLoading: true,
-        isError: false
-      };
+      return { ...state, isLoading: true };
     case 'success':
       return {
         data: action.payload,
@@ -30,11 +26,7 @@ const dataFetchReducer = <T extends any> (state: IResult<T>, action: IAction<T>)
         isError: false
       };
     case 'error':
-      return {
-        data: null,
-        isLoading: false,
-        isError: true
-      };
+      return { ...state, isError: true };
   }
 };
 
