@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Input, List } from 'antd';
-import useHackerNewsApi, { useDataApi } from '@/views/fetchData/useHackerNewsApi';
+import { useDataApi } from '@/views/fetchData/useHackerNewsApi';
 import { IData } from '@/responseTypes';
 
 const FetchData: React.FC = () => {

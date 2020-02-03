@@ -41,16 +41,24 @@ const useDataApi = <T extends any> (initialData: T, initialUrl: string): [IResul
   });
   const [url, setUrl] = useState(initialUrl);
   useEffect(() => {
+    let didCancel = false;
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
       try {
         const result = await axios(url);
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+        if (!didCancel) {
+          dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+        }
       } catch (e) {
-        dispatch({ type: 'FETCH_FAILURE' });
+        if (!didCancel) {
+          dispatch({ type: 'FETCH_FAILURE' });
+        }
       }
     };
     fetchData().then();
+    return () => {
+      didCancel = true;
+    };
   }, [url]);
   return [state, setUrl];
 };
@@ -60,18 +68,26 @@ const useHackerNewsApi = <T extends any> (initialData: T, initialUrl: string): [
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   useEffect(() => {
+    let didCancel = false;
     const fetchData = async () => {
       setIsError(false);
       setIsLoading(true);
       try {
         const result = await axios(url);
-        setData(result.data);
+        if (!didCancel) {
+          setData(result.data);
+        }
       } catch (e) {
-        setIsError(true);
+        if (!didCancel) {
+          setIsError(true);
+        }
       }
       setIsLoading(false);
     };
     fetchData().then();
+    return () => {
+      didCancel = true;
+    };
   }, [url]);
   return [{ data, isLoading, isError }, setUrl];
 };
