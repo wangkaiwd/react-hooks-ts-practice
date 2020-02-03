@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Input, List } from 'antd';
 import { useDataApi } from '@/views/fetchData/useHackerNewsApi';
-import { IData } from '@/responseTypes';
+import { IData } from '@/views/fetchData/responseTypes';
 
 const FetchData: React.FC = () => {
   const [query, setQuery] = useState('redux');
