@@ -4,4 +4,5 @@
 * If you look at a typical React application in React DevTools,you will likely find a "wrapper hell" of component surrounded by layers of providers,consumers,higher-order components,render props,and other abstractions.
 * Hooks allow you to reuse stateful logic without changing your component hierarchy.
 
-### 
+### Complex components become hard to understand
+* class have some problems about study,tools and optimizable
