@@ -6,3 +6,6 @@
 
 ### Complex components become hard to understand
 * class have some problems about study,tools and optimizable
+
+### Classes confuse both people and machines
+* class component study very hard and code very verbose
