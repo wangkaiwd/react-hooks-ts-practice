@@ -9,3 +9,6 @@
 
 ### Classes confuse both people and machines
 * class component study very hard and code very verbose
+
+### Building Your Own Hooks
+* Traditionally, there were two popular solutions to this problem: higher-order components and render props.
