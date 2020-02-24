@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import '@/assets/styles/base.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import PageHome from '@/views/PageHome';
+import '@/assets/styles/base.scss';
 
 ReactDOM.render(
   <Router>
