@@ -1,4 +1,4 @@
-const ajax = (url: string) => {
+const ajax = <T> (url: string): Promise<T> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       switch (url) {
@@ -20,3 +20,4 @@ const ajax = (url: string) => {
     }, 3000);
   });
 };
+export default ajax;
