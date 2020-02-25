@@ -72,9 +72,9 @@ const User = () => {
   }, []);
   return (
     <div>
-      <h1>个人信息</h1>
+      <h3>个人信息</h3>
       <ul>
-        <li>{state.user.name}</li>
+        <li>name:{state.user.name}</li>
       </ul>
     </div>
   );
@@ -91,9 +91,15 @@ const Books = () => {
   }, []);
   return (
     <div>
-      <h1>我的书籍</h1>
+      <h3>我的书籍</h3>
       <ul>
-        {state.books.map(item => <li>{item}</li>)}
+        {
+          state.books.length > 0
+            ?
+            state.books.map((item, i) => <li key={i}>{item}</li>)
+            :
+            <li>加载中...</li>
+        }
       </ul>
     </div>
   );
@@ -110,9 +116,15 @@ const Movies = () => {
   }, []);
   return (
     <div>
-      <h1>我的电影</h1>
+      <h3>我的电影</h3>
       <ul>
-        {state.movies.map(item => <li>{item}</li>)}
+        {
+          state.movies.length > 0
+            ?
+            state.movies.map((item, i) => <li key={i}>{item}</li>)
+            :
+            <li>加载中...</li>
+        }
       </ul>
     </div>
   );
