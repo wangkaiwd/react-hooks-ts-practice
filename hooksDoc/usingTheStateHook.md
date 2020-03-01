@@ -8,3 +8,7 @@
 
 ### Recap
 * We promise that once you try to "forget" how state works in classes, and look at this code with fresh eyes, it will make sense.
+
+### Tip: What Do Square Brackets Mean?
+
+### Tip: Using Multiple State Variables
