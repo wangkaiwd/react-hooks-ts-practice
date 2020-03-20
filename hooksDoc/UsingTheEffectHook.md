@@ -6,5 +6,7 @@
 * Hooks embrace JavaScript closures and avoid introducing React-specific API where JavaScript already provides a solution.
 * By default, it runs both after the first render and after every update.
 * Instead of thinking in terms of "mounting" and "updating", you might find it easier to think that effects happen "after render".React guarantees the DOM has been updated by the time it runs the effects.
+* useEffect run after every render
+* each effect "belongs" to a particular render
 
 ### Effects with Cleanup
