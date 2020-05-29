@@ -13,11 +13,10 @@
     2. 每次更新时传入`{}`，这样会认为每次都传入一个新的对象，从而更新视图
 * [我该如何测量 DOM 节点？](https://zh-hans.reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function)
   * 仔细研究一下`demo`
+  * callback ref 实现(why)
   * 实现功能对应的自定义`hooks`
 ### 一些不懂的知识点
 * [我该如何实现 getDerivedStateFromProps？](https://zh-hans.reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function)
 * [我可以引用一个函数组件吗?](https://zh-hans.reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function)
   * `useImperativeHandle`的用法
-
-
 * `useState`的简单原理
