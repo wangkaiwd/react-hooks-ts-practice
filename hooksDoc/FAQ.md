@@ -8,7 +8,9 @@
   * 使用了`依赖数组`但没有正确的指定所有的依赖
   * 解决方法： 用`ref`保存它，修改它，并从中读取
 * [有类似`forceUpdate`的东西吗?](https://zh-hans.reactjs.org/docs/hooks-faq.html#is-there-something-like-forceupdate)
-  * 实现一个`useForceUpdate`自定义`hooks`
+  * 实现方式
+    1. 数字，每次更新时数字+1
+    2. 每次更新时传入`{}`，这样会认为每次都传入一个新的对象，从而更新视图
 * [我该如何测量 DOM 节点？](https://zh-hans.reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function)
   * 仔细研究一下`demo`
   * 实现功能对应的自定义`hooks`

@@ -14,6 +14,7 @@ import ChildrenPassProps from '@/views/childrenPassProps/childrenPassProps';
 import UseReducerWithContext from '@/views/useReducerWithContext/useReducerWithContext';
 import PersistState from '@/views/FAQ/PersistState';
 import MeasureDom from '@/views/FAQ/MeasureDom';
+import ComponentUpdated from '@/views/FAQ/ComponentUpdated';
 
 const routerConfig = [
   { path: '/hooksComponent', name: 'hooksComponent', component: ClassVsHooks },
@@ -31,5 +32,6 @@ const routerConfig = [
   { path: '/useReducerWithContext', name: 'useReducerWithContext', component: UseReducerWithContext },
   { path: '/faq/persist', name: 'persistState', component: PersistState },
   { path: '/faq/measureDom', name: 'measureDom', component: MeasureDom },
+  { path: '/faq/componentUpdated', name: 'componentUpdated', component: ComponentUpdated },
 ];
 export default routerConfig;
