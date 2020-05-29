@@ -1,6 +1,6 @@
 import React from 'react';
 import routerConfig from '@/config/routerConfig';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './App.scss';
 
 const App: React.FC = (props) => {
@@ -9,7 +9,7 @@ const App: React.FC = (props) => {
       <ul className="menu">
         {routerConfig.map(item => (
           <li key={item.path}>
-            <Link to={item.path}>{item.name}</Link>
+            <NavLink activeClassName="actived" to={item.path}>{item.name}</NavLink>
           </li>
         ))}
       </ul>
