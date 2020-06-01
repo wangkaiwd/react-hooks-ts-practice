@@ -15,6 +15,11 @@
   * 仔细研究一下`demo`
   * callback ref 实现(why)
   * 实现功能对应的自定义`hooks`
+* [在依赖列表中省略函数是否安全？](https://zh-hans.reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)
+* [如果我的 effect 的依赖频繁变化，我该怎么办?](https://zh-hans.reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)
+* [如何避免向下传递回调?](https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down)
+
+
 ### 一些不懂的知识点
 * [我该如何实现 getDerivedStateFromProps？](https://zh-hans.reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function)
 * [我可以引用一个函数组件吗?](https://zh-hans.reactjs.org/docs/hooks-faq.html#why-am-i-seeing-stale-props-or-state-inside-my-function)
